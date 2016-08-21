@@ -27,6 +27,8 @@ namespace RegexpTextConverterSite
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
