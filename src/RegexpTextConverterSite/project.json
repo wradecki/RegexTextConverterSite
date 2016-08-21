@@ -12,7 +12,7 @@
   },
 
   "frameworks": {
-    "net461": { }
+    "net462": { }
   },
 
   "buildOptions": {
