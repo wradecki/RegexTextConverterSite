@@ -1,4 +1,6 @@
-﻿namespace RegexpTextConverterSite.Services
+﻿using System.Collections.Generic;
+
+namespace RegexpTextConverterSite.Services
 {
     public interface IConverter
     {
@@ -10,6 +12,6 @@
         /// <param name="replacement">when found to replace with replacement</param>
         /// <param name="options">other conviguration options</param>
         /// <returns>converted text</returns>
-        string Convert(string input, string replacement = "", object options = null);
+        string Convert(string input, string replacement = "", Dictionary<string, object> options = null);
     }
 }
