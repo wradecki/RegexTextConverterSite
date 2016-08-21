@@ -1,10 +1,23 @@
-﻿namespace RegexpTextConverterSite.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using RegexpTextConverterSite.Model;
+using RegexpTextConverterSite.Services;
+
+namespace RegexpTextConverterSite.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
+
     {
-        public string Index()
+        private readonly IConverter _converter;
+
+        public HomeController(IConverter converter)
         {
-            return "Test";
+            _converter = converter;
+        }
+
+        public ActionResult Index()
+        {
+            var model = new RegexModel();
+            return View(model);
         }
     }
 }
