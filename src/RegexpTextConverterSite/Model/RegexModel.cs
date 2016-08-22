@@ -25,7 +25,7 @@ namespace RegexpTextConverterSite.Model
         [Required]
         public string Pattern { get; set; }
 
-        public static IList<SelectListItem> AllRegexOptions
+        public static IEnumerable<SelectListItem> AllRegexOptions
             =>
             Enum.GetValues(typeof(RegexOptions))
                 .Cast<RegexOptions>()
