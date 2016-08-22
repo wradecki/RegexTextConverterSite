@@ -1,18 +1,93 @@
-﻿@model RegexpTextConverterSite.Model.RegexModel
-
-@{
-    Layout = null;
-}
+﻿@using System.Runtime.InteropServices
+@using RegexpTextConverterSite.Model
+@model RegexpTextConverterSite.Model.RegexModel
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <title>Simple Regex converter</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css"/>
 </head>
 <body>
-<div>
-    <input type="text" value="@Model.Pattern"/>  
-</div>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script>
+
+        var $result = null;
+        var delayTimer;
+
+        $(document)
+            .ready(function () {
+                $result = $('#@nameof(Model.Result)');
+            });
+
+        function commit() {
+            clearTimeout(delayTimer);
+            delayTimer = setTimeout(function () {
+                var $form = $('form').first();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: $form.attr('action'),
+                    data: $form.serialize(),
+                    success: function (result) {
+                        $result.val(result);
+                    }
+
+                })
+            }, 100);
+
+        }
+    </script>
+    <style>
+        body {
+            margin: 50px;
+        }
+
+        .row {
+            margin-bottom: 25px;
+        }
+    </style>
+
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-lg-1">
+                @Html.LabelFor(m => m.Pattern, new { @class = "form-label"})
+            </div>
+            <div class="col-lg-7">
+                @Html.TextAreaFor(m => m.Pattern, new { @class = "form-control", onkeyup = "commit();" })
+            </div>
+            <div class="col-lg-1">
+                @Html.LabelFor(m => m.SelectedRegexOptions)
+            </div>
+            <div class="col-lg-3">
+                @Html.ListBoxFor(m => m.SelectedRegexOptions, RegexModel.AllRegexOptions, new { Multiple = "multiple", @class = "form-control", onkeyup = "commit();" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1">
+                @Html.LabelFor(m => m.Input)
+            </div>
+            <div class="col-lg-3">
+                @Html.TextAreaFor(m => m.Input, new {@class = "form-control", onkeyup = "commit();" })
+            </div>
+            <div class="col-lg-1">
+                @Html.LabelFor(m => m.Repalcement)
+            </div>
+            <div class="col-lg-3">
+                @Html.TextAreaFor(m => m.Repalcement, new {@class = "form-control", onkeyup = "commit();" })
+            </div>
+            <div class="col-lg-1">
+                @Html.LabelFor(m => m.Result)
+            </div>
+            <div class="col-lg-3">
+                @Html.TextAreaFor(m => m.Result, new { @class = "form-control", @readonly = true })
+            </div>
+        </div>
+    }
 </body>
 </html>

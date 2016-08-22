@@ -14,10 +14,17 @@ namespace RegexpTextConverterSite.Controllers
             _converter = converter;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            var model = new RegexModel();
-            return View(model);
+            return View(new RegexModel());
+        }
+
+        [HttpPost]
+        public string Index(RegexModel model)
+        {
+            model.Result = model.ToString();
+            return model.Result;
         }
     }
 }
