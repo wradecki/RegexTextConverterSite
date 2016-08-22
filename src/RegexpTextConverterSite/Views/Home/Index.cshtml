@@ -63,7 +63,7 @@
                 @Html.LabelFor(m => m.SelectedRegexOptions)
             </div>
             <div class="col-lg-3">
-                @Html.ListBoxFor(m => m.SelectedRegexOptions, RegexModel.AllRegexOptions, new { Multiple = "multiple", @class = "form-control", onkeyup = "commit();" })
+                @Html.ListBoxFor(m => m.SelectedRegexOptions, RegexModel.AllRegexOptions, new { Multiple = "multiple", @class = "form-control", onchange = "commit();" })
             </div>
         </div>
 
