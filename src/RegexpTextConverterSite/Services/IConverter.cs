@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace RegexpTextConverterSite.Services
 {
@@ -6,12 +7,12 @@ namespace RegexpTextConverterSite.Services
     {
         /// <summary>
         /// Convert input using replacement
-        /// 
         /// </summary>
         /// <param name="input">input text</param>
         /// <param name="replacement">when found to replace with replacement</param>
         /// <param name="options">other conviguration options</param>
         /// <returns>converted text</returns>
-        string Convert(string input, string replacement = "", Dictionary<string, object> options = null);
+        [NotNull]
+        string Convert([NotNull] string input, [NotNull] string replacement = "", ConverterOptions options = null);
     }
 }

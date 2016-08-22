@@ -9,6 +9,14 @@ namespace RegexpTextConverterSite.Model
 {
     public class RegexModel
     {
+        public RegexModel()
+        {
+            Input = string.Empty;
+            Repalcement = string.Empty;
+            Pattern = string.Empty;
+            SelectedRegexOptions = new List<RegexOptions> {RegexOptions.None};
+        }
+
         [Required]
         public string Input { get; set; }
 

@@ -1,15 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 namespace RegexpTextConverterSite.Services
 {
     public class RegexConverter : IConverter
     {
-        public string Convert(string input, string replacement = "", Dictionary<string, object> options = null)
+        /// <inheritdoc />
+        [NotNull]
+        public string Convert([NotNull] string input, [NotNull] string replacement = "", ConverterOptions options = null)
         {
-            throw new NotImplementedException();
+            var regexOptions = options as RegexConverterOptions;
+            if (regexOptions == null)
+            {
+                throw new ArgumentNullException(nameof(regexOptions));
+            }
+
+            var regex = new Regex(regexOptions.Pattern, regexOptions.RegexOptions);
+
+            return regex.Replace(input, replacement);
         }
     }
 }

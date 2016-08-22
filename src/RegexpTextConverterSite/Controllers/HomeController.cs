@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using JetBrains.Annotations;
+using Microsoft.AspNetCore.Mvc;
 using RegexpTextConverterSite.Model;
 using RegexpTextConverterSite.Services;
 
@@ -15,16 +20,26 @@ namespace RegexpTextConverterSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
-        {
-            return View(new RegexModel());
-        }
+        public ActionResult Index() => View(new RegexModel());
 
         [HttpPost]
         public string Index(RegexModel model)
         {
-            model.Result = model.ToString();
-            return model.Result;
+            string result;
+            try
+            {
+                var options = new RegexConverterOptions(model.Pattern, ConvertToFlag(model.SelectedRegexOptions));
+                result = _converter.Convert(model.Input, model.Repalcement, options);
+            }
+            catch (Exception e)
+            {
+                result = e.Message;
+            }
+
+            return result;
         }
+
+        private static RegexOptions ConvertToFlag([NotNull] IList<RegexOptions> selectedRegexOptions)
+            => selectedRegexOptions.Any() ? selectedRegexOptions.Aggregate((resultedOptions, nextOption) => resultedOptions | nextOption) : RegexOptions.None;
     }
 }
