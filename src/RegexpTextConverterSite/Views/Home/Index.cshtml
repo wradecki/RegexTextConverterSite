@@ -1,6 +1,5 @@
-﻿@using System.Runtime.InteropServices
-@using RegexpTextConverterSite.Model
-@model RegexpTextConverterSite.Model.RegexModel
+﻿@using RegexpTextConverterSite.Model
+@model RegexModel
 
 <!DOCTYPE html>
 
@@ -35,7 +34,7 @@
                         $result.val(result);
                     }
 
-                })
+                });
             }, 100);
 
         }
@@ -55,7 +54,7 @@
     {
         <div class="row">
             <div class="col-lg-1">
-                @Html.LabelFor(m => m.Pattern, new { @class = "form-label"})
+                @Html.LabelFor(m => m.Pattern)
             </div>
             <div class="col-lg-7">
                 @Html.TextAreaFor(m => m.Pattern, new { @class = "form-control", onkeyup = "commit();" })
