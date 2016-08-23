@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,13 +15,11 @@ namespace RegexTextConverterSite.Model
             Pattern = string.Empty;
             SelectedRegexOptions = new List<RegexOptions> {RegexOptions.None};
         }
-
-        [Required]
+        
         public string Input { get; set; }
-
+        
         public string Repalcement { get; set; }
-
-        [Required]
+        
         public string Pattern { get; set; }
 
         public static IEnumerable<SelectListItem> AllRegexOptions
@@ -35,5 +32,12 @@ namespace RegexTextConverterSite.Model
         public IList<RegexOptions> SelectedRegexOptions { get; set; }
 
         public string Result { get; set; }
+
+        public void SetNullsToEmptyString()
+        {
+            Input = Input ?? string.Empty;
+            Repalcement = Repalcement ?? string.Empty;
+            Pattern = Pattern ?? string.Empty;
+        }
     }
 }

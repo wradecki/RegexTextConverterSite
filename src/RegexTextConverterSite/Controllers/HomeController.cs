@@ -28,6 +28,7 @@ namespace RegexTextConverterSite.Controllers
             string result;
             try
             {
+                model.SetNullsToEmptyString();
                 var options = new RegexConverterOptions(model.Pattern, ConvertToFlag(model.SelectedRegexOptions));
                 result = _converter.Convert(model.Input, model.Repalcement, options);
             }
