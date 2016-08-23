@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace RegexpTextConverterSite.Services
+namespace RegexTextConverterSite.Services
 {
     public class RegexConverter : IConverter
     {

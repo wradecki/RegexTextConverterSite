@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace RegexpTextConverterSite.Model
+namespace RegexTextConverterSite.Model
 {
     public class RegexModel
     {

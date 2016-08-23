@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc;
-using RegexpTextConverterSite.Model;
-using RegexpTextConverterSite.Services;
+using RegexTextConverterSite.Model;
+using RegexTextConverterSite.Services;
 
-namespace RegexpTextConverterSite.Controllers
+namespace RegexTextConverterSite.Controllers
 {
     public class HomeController : Controller
 

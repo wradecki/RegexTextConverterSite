@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 
-namespace RegexpTextConverterSite.Services
+namespace RegexTextConverterSite.Services
 {
     public class RegexConverterOptions : ConverterOptions
     {

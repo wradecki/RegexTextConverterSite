@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace RegexpTextConverterSite.Services
+namespace RegexTextConverterSite.Services
 {
     public interface IConverter
     {

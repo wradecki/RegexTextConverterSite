@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace RegexpTextConverterSite
+namespace RegexTextConverterSite
 {
     public static class Program
     {
