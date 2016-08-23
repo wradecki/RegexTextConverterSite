@@ -27,6 +27,9 @@ bld/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 **/wwwroot/lib/
 
+# Visual Studio 2015 Publish Profile
+PublishProfiles/
+
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
